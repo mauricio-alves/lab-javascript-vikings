@@ -11,6 +11,8 @@ class Soldier {
 
   receiveDamage(damage) {
     this.health -= damage;
+    // added return
+    return;
   }
 }
 
@@ -37,6 +39,12 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
+  // constructor e super opcionais
+
+  // constructor(health, strength) {
+  //   super(health, strength);
+  // }
+
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health > 0) {
@@ -63,20 +71,36 @@ class War {
   }
 
   vikingAttack() {
-    // const newSaxon = new Soldier(60, 25);
-    // const newViking = new Soldier(300, 150);
-    // receiveDamage(150) {
-    //   newSaxon.health -= damage;
-    //   if (this.health < 0) {
-    //     return this.saxonArmy.pop();
-    //   }
+    // still don't get this shit
+    // Saxon.receiveDamage(Viking.strength);
+    // if (Saxon.health === 0) {
+    //   this.saxonArmy.slice(Saxon, Saxon + 1);
     // }
+    // return Saxon.receiveDamage(Viking.strength);
   }
 
-  saxonAttack() {}
+  saxonAttack() {
+    // still don't get this shit
+  }
 
-  showStatus() {}
+  showStatus() {
+    // added solution
+    if (!this.vikingArmy.length) {
+      return 'Saxons have fought for their lives and survived another day...';
+    }
+    if (!this.saxonArmy.length) {
+      return 'Vikings have won the war of the century!';
+    }
+    return `Vikings and Saxons are still in the thick of battle.`;
+  }
 }
+
+const war = new War();
+
+war.addViking(new Viking('Ragnar', 4, 5));
+war.addSaxon(new Saxon(2, 4));
+
+console.log(war.showStatus());
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
